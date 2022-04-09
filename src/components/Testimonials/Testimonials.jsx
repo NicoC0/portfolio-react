@@ -1,6 +1,14 @@
 import React from 'react'
 import './testimonials.css'
 import { testimonials } from '../../constants/testimonials'
+// import Swiper core and required modules
+import { Pagination } from 'swiper';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 const Testimonials = () => {
   return (
@@ -8,11 +16,16 @@ const Testimonials = () => {
       <h5>Reseñas de clientes</h5>
       <h2>Valoraciones</h2>
 
-      <div className="container testimonials__container">
+      <Swiper className="container testimonials__container"
+      modules={[ Pagination ]}
+      spaceBetween={40}
+      slidesPerView={1}
+      pagination={{ clickable: true }}
+      >
         {
           testimonials.map(({ name, image, review  }, index) => {
             return(
-              <article key={index} className="testimonial">
+              <SwiperSlide key={index} className="testimonial">
                 <div className="client__avatar">
                   <img src={image} alt={name} />
                 </div>
@@ -20,11 +33,11 @@ const Testimonials = () => {
                 <small className="client__review">
                   {review}
                 </small>
-            </article>
+            </SwiperSlide>
             )
           })
         }
-      </div>
+      </Swiper>
     </section>
   )
 }
