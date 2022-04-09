@@ -36,12 +36,18 @@
     font-size: 0.8rem;
 }
 
+
 /* Form */
 
 form {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 1.5rem;
+}
+form button {
+    width: 110px; 
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
 
 input, textarea {
