@@ -1,5 +1,6 @@
 import React from 'react'
 import './testimonials.css'
+import { testimonials } from '../../constants/testimonials'
 
 const Testimonials = () => {
   return (
@@ -8,15 +9,21 @@ const Testimonials = () => {
       <h2>Valoraciones</h2>
 
       <div className="container testimonials__container">
-        <article className="testimonial">
-          <div className="client__avatar">
-            <img src="" alt="" />
-          </div>
-          <h5 className='client__name'>Nombre</h5>
-          <small className="client__review">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam laboriosam velit eligendi natus provident, accusamus sunt culpa officiis doloremque facere veritatis eum, repellat maiores illo adipisci at praesentium consequatur obcaecati.
-          </small>
-        </article>
+        {
+          testimonials.map(({ name, image, review  }, index) => {
+            return(
+              <article key={index} className="testimonial">
+                <div className="client__avatar">
+                  <img src={image} alt={name} />
+                </div>
+                <h5 className='client__name'>{name}</h5>
+                <small className="client__review">
+                  {review}
+                </small>
+            </article>
+            )
+          })
+        }
       </div>
     </section>
   )
